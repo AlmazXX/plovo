@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { ApiDish, Dish } from "../../types";
-import { createDish, fetchDishes, fetchOneDish } from "./dishesThunk";
+import {
+  createDish,
+  fetchDishes,
+  fetchOneDish,
+  updateDish,
+} from "./dishesThunk";
 
 interface DishesState {
   items: ApiDish[];
@@ -51,6 +56,15 @@ export const dishesSlice = createSlice({
       })
       .addCase(fetchOneDish.rejected, (state) => {
         state.fetching = false;
+      })
+      .addCase(updateDish.pending, (state) => {
+        state.creating = true;
+      })
+      .addCase(updateDish.fulfilled, (state) => {
+        state.creating = false;
+      })
+      .addCase(updateDish.rejected, (state) => {
+        state.creating = false;
       });
   },
 });
