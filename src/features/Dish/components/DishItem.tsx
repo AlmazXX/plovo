@@ -24,7 +24,7 @@ const DishItem: FC<Props> = ({ dish }) => {
             <p className="card-text">{dish.price} KGS</p>
             <p className="d-flex gap-2">
               <button className="btn btn-success">Add</button>
-              <Link to={`/edit-dish/${dish.id}`} className="btn btn-primary">
+              <Link to={`/update-dish/${dish.id}`} className="btn btn-primary">
                 Edit
               </Link>
               <button className="btn btn-danger">Delete</button>
