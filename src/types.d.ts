@@ -8,3 +8,7 @@ export interface Dish {
 export interface DishMutation extends Dish {
   price: string;
 }
+
+export interface ApiDish extends Dish {
+  id: string
+}
