@@ -4,7 +4,11 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Spinner from "../../components/Spinner/Spinner";
 import { Dish } from "../../types";
 import DishForm from "./components/DishForm";
-import { selectDish, selectDishesFetching } from "./dishesSlice";
+import {
+  selectDish,
+  selectDishesFetching,
+  selectDishSubmitting,
+} from "./dishesSlice";
 import { fetchOneDish, updateDish } from "./dishesThunk";
 
 const UpdateDish = () => {
@@ -12,6 +16,7 @@ const UpdateDish = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const fetchOneLoading = useAppSelector(selectDishesFetching);
+  const submitting = useAppSelector(selectDishSubmitting);
   const dish = useAppSelector(selectDish);
 
   useEffect(() => {
@@ -33,7 +38,11 @@ const UpdateDish = () => {
       <h4>Edit dish</h4>
       {fetchOneLoading && <Spinner />}
       {existingDish && (
-        <DishForm onSubmit={onSubmit} existingDish={existingDish} />
+        <DishForm
+          submitting={submitting}
+          existingDish={existingDish}
+          onSubmit={onSubmit}
+        />
       )}
     </div>
   );
