@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { Dish, DishMutation } from "../../../types";
 
 interface Props {
@@ -20,8 +20,14 @@ const DishForm: FC<Props> = ({ onSubmit }) => {
     setDish((prev) => ({ ...prev, [name]: value }));
   };
 
+  const onFormSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    await onSubmit({ ...dish, price: parseFloat(dish.price) });
+    setDish(initialState);
+  };
+
   return (
-    <form>
+    <form onSubmit={onFormSubmit}>
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input
