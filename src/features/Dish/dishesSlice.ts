@@ -3,6 +3,7 @@ import { RootState } from "../../app/store";
 import { ApiDish, Dish } from "../../types";
 import {
   createDish,
+  deleteDish,
   fetchDishes,
   fetchOneDish,
   updateDish,
@@ -13,6 +14,7 @@ interface DishesState {
   item: Dish | null;
   creating: boolean;
   fetching: boolean;
+  deleting: false | string;
 }
 
 const initialState: DishesState = {
@@ -20,6 +22,7 @@ const initialState: DishesState = {
   item: null,
   creating: false,
   fetching: false,
+  deleting: false,
 };
 
 export const dishesSlice = createSlice({
@@ -65,6 +68,15 @@ export const dishesSlice = createSlice({
       })
       .addCase(updateDish.rejected, (state) => {
         state.creating = false;
+      })
+      .addCase(deleteDish.pending, (state, { meta: { arg: dishId } }) => {
+        state.deleting = dishId;
+      })
+      .addCase(deleteDish.fulfilled, (state) => {
+        state.deleting = false;
+      })
+      .addCase(deleteDish.rejected, (state) => {
+        state.deleting = false;
       });
   },
 });
@@ -74,3 +86,4 @@ export const selectDishes = (state: RootState) => state.dishes.items;
 export const selectDish = (state: RootState) => state.dishes.item;
 export const selectDishCreating = (state: RootState) => state.dishes.creating;
 export const selectDishesFetching = (state: RootState) => state.dishes.fetching;
+export const selectDishDeleting = (state: RootState) => state.dishes.deleting;
