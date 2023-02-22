@@ -1,16 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { ApiDish } from "../../types";
-import { createDish, fetchDishes } from "./dishesThunk";
+import { ApiDish, Dish } from "../../types";
+import { createDish, fetchDishes, fetchOneDish } from "./dishesThunk";
 
 interface DishesState {
   items: ApiDish[];
+  item: Dish | null;
   creating: boolean;
   fetching: boolean;
 }
 
 const initialState: DishesState = {
   items: [],
+  item: null,
   creating: false,
   fetching: false,
 };
@@ -39,11 +41,22 @@ export const dishesSlice = createSlice({
       })
       .addCase(createDish.rejected, (state) => {
         state.creating = false;
+      })
+      .addCase(fetchOneDish.pending, (state) => {
+        state.fetching = true;
+      })
+      .addCase(fetchOneDish.fulfilled, (state, { payload: dish }) => {
+        state.fetching = false;
+        state.item = dish;
+      })
+      .addCase(fetchOneDish.rejected, (state) => {
+        state.fetching = false;
       });
   },
 });
 
 export const dishesReducer = dishesSlice.reducer;
 export const selectDishes = (state: RootState) => state.dishes.items;
+export const selectDish = (state: RootState) => state.dishes.item;
 export const selectDishCreating = (state: RootState) => state.dishes.creating;
 export const selectDishesFetching = (state: RootState) => state.dishes.fetching;
