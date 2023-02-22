@@ -1,5 +1,9 @@
-import { ChangeEvent, useState } from "react";
-import { DishMutation } from "../../../types";
+import { ChangeEvent, FC, useState } from "react";
+import { Dish, DishMutation } from "../../../types";
+
+interface Props {
+  onSubmit: (dish: Dish) => void;
+}
 
 const initialState: DishMutation = {
   name: "",
@@ -8,7 +12,7 @@ const initialState: DishMutation = {
   price: "",
 };
 
-const DishForm = () => {
+const DishForm: FC<Props> = ({ onSubmit }) => {
   const [dish, setDish] = useState(initialState);
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
