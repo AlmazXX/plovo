@@ -10,5 +10,9 @@ export interface DishMutation extends Dish {
 }
 
 export interface ApiDish extends Dish {
-  id: string
+  id: string;
+}
+
+export interface ApiDishesList {
+  [key: string]: ApiDish;
 }
