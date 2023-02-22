@@ -42,6 +42,7 @@ const DishForm: FC<Props> = ({
           className="form-control"
           id="name"
           name="name"
+          required
           value={dish.name}
           onChange={onChange}
         />
@@ -74,6 +75,7 @@ const DishForm: FC<Props> = ({
           className="form-control"
           id="price"
           name="price"
+          required
           value={dish.price}
           onChange={onChange}
         />
