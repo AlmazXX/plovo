@@ -5,6 +5,7 @@ import { Dish, DishMutation } from "../../../types";
 import { selectDishCreating } from "../dishesSlice";
 
 interface Props {
+  existingDish?: DishMutation;
   onSubmit: (dish: Dish) => void;
 }
 
@@ -15,9 +16,9 @@ const initialState: DishMutation = {
   price: "",
 };
 
-const DishForm: FC<Props> = ({ onSubmit }) => {
+const DishForm: FC<Props> = ({ existingDish = initialState, onSubmit }) => {
   const creating = useAppSelector(selectDishCreating);
-  const [dish, setDish] = useState(initialState);
+  const [dish, setDish] = useState(existingDish);
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
