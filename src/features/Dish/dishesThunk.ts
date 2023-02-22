@@ -10,7 +10,7 @@ export const createDish = createAsyncThunk(
 );
 
 export const fetchDishes = createAsyncThunk<ApiDish[]>(
-  "/fetchDishes",
+  "dishes/fetch",
   async () => {
     const { data } = await axiosApi.get<ApiDishesList | null>("/dishes.json");
     const dishes = data
@@ -19,3 +19,14 @@ export const fetchDishes = createAsyncThunk<ApiDish[]>(
     return dishes;
   }
 );
+
+export const fetchOneDish = createAsyncThunk<Dish, string>(
+  "dishes/fetchOne",
+  async (id) => {
+    const { data } = await axiosApi.get<Dish | null>(`/dishes/${id}.json`);
+    if (data === null) throw new Error("Not Found!");
+    return data;
+  }
+);
+
+export const updateDish = createAsyncThunk<void>
