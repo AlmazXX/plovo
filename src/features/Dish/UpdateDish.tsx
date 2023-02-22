@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Spinner from "../../components/Spinner/Spinner";
+import { clientUrl } from "../../constants";
 import { Dish } from "../../types";
 import DishForm from "./components/DishForm";
 import {
   selectDish,
   selectDishesFetching,
-  selectDishSubmitting,
+  selectDishSubmitting
 } from "./dishesSlice";
 import { fetchOneDish, updateDish } from "./dishesThunk";
 
@@ -25,7 +26,7 @@ const UpdateDish = () => {
 
   const onSubmit = async (dish: Dish) => {
     await dispatch(updateDish({ id, dish }));
-    navigate("/");
+    navigate(clientUrl);
   };
 
   const existingDish = dish && {

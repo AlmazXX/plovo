@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Spinner from "../../components/Spinner/Spinner";
+import { clientUrl } from "../../constants";
 import { Dish } from "../../types";
 import DishForm from "./components/DishForm";
 import { selectDishSubmitting } from "./dishesSlice";
@@ -13,7 +14,7 @@ const CreateDish = () => {
 
   const onSubmit = async (dish: Dish) => {
     await dispatch(createDish(dish));
-    navigate("/");
+    navigate(clientUrl);
   };
 
   return (
