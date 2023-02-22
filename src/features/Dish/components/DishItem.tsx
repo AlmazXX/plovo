@@ -1,6 +1,7 @@
 import { FC, MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
 import BtnSpinner from "../../../components/Spinner/BtnSpinner";
+import { clientUrl } from "../../../constants";
 import { ApiDish } from "../../../types";
 
 interface Props {
@@ -28,7 +29,10 @@ const DishItem: FC<Props> = ({ dish, deleting, onDelete }) => {
             <p className="card-text">{dish.price} KGS</p>
             <p className="d-flex gap-2">
               <button className="btn btn-success">Add</button>
-              <Link to={`/update-dish/${dish.id}`} className="btn btn-primary">
+              <Link
+                to={clientUrl + "/update-dish/" + dish.id}
+                className="btn btn-primary"
+              >
                 Edit
               </Link>
               <button

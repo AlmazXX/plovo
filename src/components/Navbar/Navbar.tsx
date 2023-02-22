@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { clientUrl } from "../../constants";
 
 const Navbar = () => {
   return (
@@ -8,17 +9,17 @@ const Navbar = () => {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <NavLink to="/" className="nav-link">
+              <NavLink to={clientUrl} className="nav-link">
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/create-dish" className="nav-link">
+              <NavLink to={clientUrl + "/create-dish"} className="nav-link">
                 Add dish
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/orders" className="nav-link">
+              <NavLink to={clientUrl + "/orders"} className="nav-link">
                 Orders
               </NavLink>
             </li>
