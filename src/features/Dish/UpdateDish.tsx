@@ -37,12 +37,16 @@ const UpdateDish = () => {
     <div className="row mt-2">
       <h4>Edit dish</h4>
       {fetchOneLoading && <Spinner />}
-      {existingDish && (
+      {existingDish ? (
         <DishForm
           submitting={submitting}
           existingDish={existingDish}
           onSubmit={onSubmit}
         />
+      ) : (
+        <div className="col">
+          <p>Not Found</p>
+        </div>
       )}
     </div>
   );
