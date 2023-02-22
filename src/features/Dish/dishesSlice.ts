@@ -12,7 +12,7 @@ import {
 interface DishesState {
   items: ApiDish[];
   item: Dish | null;
-  creating: boolean;
+  submitting: boolean;
   fetching: boolean;
   deleting: false | string;
 }
@@ -20,7 +20,7 @@ interface DishesState {
 const initialState: DishesState = {
   items: [],
   item: null,
-  creating: false,
+  submitting: false,
   fetching: false,
   deleting: false,
 };
@@ -42,13 +42,13 @@ export const dishesSlice = createSlice({
         state.fetching = false;
       })
       .addCase(createDish.pending, (state) => {
-        state.creating = true;
+        state.submitting = true;
       })
       .addCase(createDish.fulfilled, (state) => {
-        state.creating = false;
+        state.submitting = false;
       })
       .addCase(createDish.rejected, (state) => {
-        state.creating = false;
+        state.submitting = false;
       })
       .addCase(fetchOneDish.pending, (state) => {
         state.fetching = true;
@@ -61,13 +61,13 @@ export const dishesSlice = createSlice({
         state.fetching = false;
       })
       .addCase(updateDish.pending, (state) => {
-        state.creating = true;
+        state.submitting = true;
       })
       .addCase(updateDish.fulfilled, (state) => {
-        state.creating = false;
+        state.submitting = false;
       })
       .addCase(updateDish.rejected, (state) => {
-        state.creating = false;
+        state.submitting = false;
       })
       .addCase(deleteDish.pending, (state, { meta: { arg: dishId } }) => {
         state.deleting = dishId;
@@ -84,6 +84,6 @@ export const dishesSlice = createSlice({
 export const dishesReducer = dishesSlice.reducer;
 export const selectDishes = (state: RootState) => state.dishes.items;
 export const selectDish = (state: RootState) => state.dishes.item;
-export const selectDishCreating = (state: RootState) => state.dishes.creating;
+export const selectDishSubmitting = (state: RootState) => state.dishes.submitting;
 export const selectDishesFetching = (state: RootState) => state.dishes.fetching;
 export const selectDishDeleting = (state: RootState) => state.dishes.deleting;
