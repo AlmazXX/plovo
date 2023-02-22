@@ -1,10 +1,9 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
-import { useAppSelector } from "../../../app/hooks";
 import BtnSpinner from "../../../components/Spinner/BtnSpinner";
 import { Dish, DishMutation } from "../../../types";
-import { selectDishCreating } from "../dishesSlice";
 
 interface Props {
+  submitting: boolean;
   existingDish?: DishMutation;
   onSubmit: (dish: Dish) => void;
 }
@@ -16,8 +15,11 @@ const initialState: DishMutation = {
   price: "",
 };
 
-const DishForm: FC<Props> = ({ existingDish = initialState, onSubmit }) => {
-  const creating = useAppSelector(selectDishCreating);
+const DishForm: FC<Props> = ({
+  submitting,
+  existingDish = initialState,
+  onSubmit,
+}) => {
   const [dish, setDish] = useState(existingDish);
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -76,8 +78,8 @@ const DishForm: FC<Props> = ({ existingDish = initialState, onSubmit }) => {
           onChange={onChange}
         />
       </div>
-      <button type="submit" className="btn btn-primary" disabled={creating}>
-        {creating && <BtnSpinner />}Submit
+      <button type="submit" className="btn btn-primary" disabled={submitting}>
+        {submitting && <BtnSpinner />}Submit
       </button>
     </form>
   );
