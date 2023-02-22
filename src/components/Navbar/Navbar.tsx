@@ -13,7 +13,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/new-dish" className="nav-link">
+              <NavLink to="/create-dish" className="nav-link">
                 New dish
               </NavLink>
             </li>
