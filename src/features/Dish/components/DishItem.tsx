@@ -1,11 +1,15 @@
-import { FC } from "react";
+import { FC, MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
+import BtnSpinner from "../../../components/Spinner/BtnSpinner";
 import { ApiDish } from "../../../types";
 
 interface Props {
   dish: ApiDish;
+  deleting: boolean;
+  onDelete: MouseEventHandler;
 }
-const DishItem: FC<Props> = ({ dish }) => {
+
+const DishItem: FC<Props> = ({ dish, deleting, onDelete }) => {
   const imageUrl =
     "https://img5.lalafo.com/i/posters/original/a8/86/70/08dc19d74138e3fa3b8b56a939.jpeg";
   const image = dish.image || imageUrl;
@@ -27,7 +31,13 @@ const DishItem: FC<Props> = ({ dish }) => {
               <Link to={`/update-dish/${dish.id}`} className="btn btn-primary">
                 Edit
               </Link>
-              <button className="btn btn-danger">Delete</button>
+              <button
+                className="btn btn-danger"
+                onClick={onDelete}
+                disabled={deleting}
+              >
+                {deleting && <BtnSpinner />}Delete
+              </button>
             </p>
           </div>
         </div>
