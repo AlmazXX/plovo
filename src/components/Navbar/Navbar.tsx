@@ -4,7 +4,7 @@ import { clientUrl } from "../../constants";
 const Navbar = () => {
   return (
     <div className="navbar navbar-expand-sm navbar-dark bg-primary">
-      <div className="container-fluid">
+      <div className="container">
         <span className="navbar-brand">Plovo</span>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
