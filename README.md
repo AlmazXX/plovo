@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# Plovo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is the admin dashboard for a food ordering app. The project was built using React and Bootstrap for the front-end components, Redux Toolkit for storing state, Axios for making HTTP requests, and Firebase for the database.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+The admin dashboard for the food ordering app has the following features:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Products management
+* Products storing in Firebase
+* Orders management (coming soon)
+* Cart
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Getting started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get started with this project, clone the repository to your local machine:
 
-### `npm run build`
+1. Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  git clone https://github.com/AlmazXX/plovo.git
+  cd plovo
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You will need to have the following software installed:
 
-### `npm run eject`
+* npm (v6 or higher)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Installting
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. To install the dependencies, run the following command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+  npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Start the client:
 
-## Learn More
+```bash
+  npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This will start the application and open it in your default web browser at http://localhost:3000.
+    
+## Tech Stack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* React
+* Bootstrap
+* Redux Toolkit
+* Axios
+* Firebase
