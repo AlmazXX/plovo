@@ -2,6 +2,11 @@
 
 This project is the admin dashboard for a food ordering app. The project was built using React and Bootstrap for the front-end components, Redux Toolkit for storing state, Axios for making HTTP requests, and Firebase for the database.
 
+## Demo
+
+![Demo](https://github.com/AlmazXX/plovo/blob/master/demo/plovo.gif)
+
+You can test this project here: https://almazxx.github.io/plovo
 
 ## Features
 
