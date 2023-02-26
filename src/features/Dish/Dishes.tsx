@@ -32,14 +32,14 @@ const Dishes = () => {
       {fetching ? (
         <Spinner />
       ) : (
-        dishes.map((dish) => (
+        dishes.length ? dishes.map((dish) => (
           <DishItem
             key={dish.id}
             dish={dish}
             deleting={deleting === dish.id}
             onDelete={() => onDelete(dish.id)}
           />
-        ))
+        )) : <p>No transactions yet</p>
       )}
     </>
   );
