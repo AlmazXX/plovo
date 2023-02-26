@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/plovo/static/css/main.c2cab247.css",
-    "main.js": "/plovo/static/js/main.47b0fa29.js",
+    "main.js": "/plovo/static/js/main.a9eb469a.js",
     "index.html": "/plovo/index.html",
     "main.c2cab247.css.map": "/plovo/static/css/main.c2cab247.css.map",
-    "main.47b0fa29.js.map": "/plovo/static/js/main.47b0fa29.js.map"
+    "main.a9eb469a.js.map": "/plovo/static/js/main.a9eb469a.js.map"
   },
   "entrypoints": [
     "static/css/main.c2cab247.css",
-    "static/js/main.47b0fa29.js"
+    "static/js/main.a9eb469a.js"
   ]
 }
